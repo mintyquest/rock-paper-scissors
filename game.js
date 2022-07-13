@@ -5,13 +5,7 @@ function computerPlay() {
     return moves[movePicker].toString();
 }
 
-//Get player's move and pass into a variable
-//Get computer's move and pass into a variable
-//Compare player and computer's moves against eachother to see who has the better hand.
-//Return the winner of the round in a string
-
-let playerMove = prompt("What is your move?", "Please type your answer here").toLowerCase();
-
+//This function starts a round and pits the player's input and the computer's input against eachother.
 function startRound(playerSelection, computerSelection) {
 
     
@@ -41,5 +35,32 @@ function startRound(playerSelection, computerSelection) {
     }
 
     
-    //console.log(startRound(playerMove, computerPlay().toString()));
+   
+}
+
+//This function runs five rounds of the game and logs each win/lose and the overall winner.
+function game() {
+    let winCount = 0;
+    let loseCount = 0;
+
+    for (let i = 0; i < 5; i++) {
+
+        let playerMove = prompt('What is your move?', 'Please type your answer here').toLowerCase();
+        let result = startRound(playerMove, computerPlay());
+        console.log(result);
+            if (result.includes('Win')) {
+                ++winCount;
+            }
+            else {
+                ++loseCount;
+            }
+
+    }
+    if (winCount > loseCount) {
+        console.log('Congrats! You won the most rounds!');
+    }
+    else {
+        console.log('You lost most of the rounds. Better luck next time!');
+    }
+    
 }
